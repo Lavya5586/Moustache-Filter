@@ -2,7 +2,7 @@ noseX = 0;
 noseY = 0;
 function preload()
 {
-    
+    moustache = loadImage("https://i.postimg.cc/3x3QzSGq/m.png");
 }
 
 function setup()
@@ -22,7 +22,7 @@ function draw()
     image(video, 0, 0, 300, 300);
     fill(255, 0, 0);
     stroke(255, 0, 0);
-    image(clown_nose, noseX, noseY, 30, 30);
+    image(moustache, noseX, noseY, 30, 30);
 }
 
 function modelLoaded()
@@ -35,9 +35,14 @@ function gotPoses(results)
     if (results.length > 0)
     {
         console.log(results);
-        noseX = results[0].pose.nose.x-200;
-        noseY = results[0].pose.nose.y-200;
+        noseX = results[0].pose.nose.x-15;
+        noseY = results[0].pose.nose.y+5;
         console.log("nose x = " + noseX);
         console.log("nose y = " + noseY);
     }
+}
+
+function take_snapshot()
+{
+    save('myMoustacheFilterImage.png');
 }
